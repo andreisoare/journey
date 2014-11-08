@@ -1,0 +1,11 @@
+{
+  "name": "tb-analytics-server",
+  "version": "0.1.0",
+  "description": "Talentbuddy Analytics",
+  "dependencies": {
+    "koa": "0.13.0"
+  },
+  "engines": {
+    "node": ">= 0.11.14"
+  }
+}
