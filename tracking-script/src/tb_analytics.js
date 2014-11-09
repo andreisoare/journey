@@ -7,7 +7,7 @@ require('bower_components/jquery/dist/jquery.min');
 
   var $ = jQuery.noConflict(true);
   var VERSION = "1.0";
-  var URL = "http://analytics.talentbuddy.co/api/tracking/1";
+  var URL = "http://journey.talentbuddy.co/api/tracking/1";
   var ANON_PREFIX = "__tb_anon_"
 
   var tbAnalytics = window.tbAnalytics = window.tbAnalytics || [];

@@ -2,7 +2,7 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     clean: {
-      script: ["dist/tb_analytics.js"],
+      script: ["dist/journey.js"],
     },
 
     neuter: {
@@ -11,15 +11,15 @@ module.exports = function(grunt) {
           includeSourceMap: false,
           template: "{%= src %}"
         },
-        dest: grunt.option('target') === "dev" ? 'dist/tb_analytics.min.js' : 'dist/tb_analytics.js',
-        src: 'src/tb_analytics.js'
+        dest: grunt.option('target') === "dev" ? 'dist/journey.min.js' : 'dist/journey.js',
+        src: 'src/journey.js'
       }
     },
 
     uglify: {
       prod: {
         files: {
-          'dist/tb_analytics.min.js': 'dist/tb_analytics.js'
+          'dist/journey.min.js': 'dist/journey.js'
         }
       }
     },
