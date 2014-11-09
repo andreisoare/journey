@@ -4,7 +4,7 @@
   "authors": [
     "Andrei Soare <andrei.soare@gmail.com>"
   ],
-  "description": "Talentbuddy Analytics tracking script.",
+  "description": "Journey tracking script.",
   "main": "dist/journey.min.js",
   "keywords": [
     "analytics"
