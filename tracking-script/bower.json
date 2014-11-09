@@ -1,0 +1,25 @@
+{
+  "name": "tracking-script",
+  "version": "1.0",
+  "homepage": "https://github.com/andreisoare/tb-analytics",
+  "authors": [
+    "Andrei Soare <andrei.soare@gmail.com>"
+  ],
+  "description": "Talentbuddy Analytics tracking script.",
+  "main": "dist/tb_analytics.min.js",
+  "keywords": [
+    "analytics"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1"
+  }
+}
