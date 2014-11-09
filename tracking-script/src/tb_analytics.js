@@ -37,7 +37,7 @@ require('bower_components/jquery/dist/jquery.min');
       data: {
         event: event,
         properties: properties,
-        id: get_uid(),
+        userId: get_uid(),
         version: VERSION,
         key: tbAnalytics.config.key
       },

@@ -60,21 +60,28 @@ User
  * lastName
  * name
  * email
- * created
- * firstSeen
- * lastSeen
- * country
- * city
- * lastIpUsed
+ * created (backend)
+ * firstSeen (backend, optional)
+ * lastSeen (backend, optional)
+ * country (backend, optional)
+ * city (backend, optional)
+ * lastIpUsed (backend, optional)
  * properties (JSON)
 
 Event
  * id
  * userId
- * timestamp
+ * timestamp (backend)
  * referrer
  * campaign
  * browser
  * os
+ * ip (backend)
  * properties (JSON)
- * ip
+
+## Routes
+
+ * `/` (login) -> custom POST with email, password
+ * `/dashboard` (list of users sorted by created) -> fetch User sortBy, chunkSize, page; search by custom field
+    * `store.find('user', {email: "test@gmail.com", page: 1, chunkSize: 100, sortBy: "created"});`
+ * `/:user_id` (for one user, list of events sorted by timestamp) -> fetch Event sortBy, chunkSize, page
