@@ -20,7 +20,8 @@ require('bower_components/jquery/dist/jquery.min');
       }
     });
   })({
-    trackPages: true
+    trackPages: true,
+    trackDistinctReferrers: true
   });
 
   generateRandomId();
@@ -37,7 +38,8 @@ require('bower_components/jquery/dist/jquery.min');
         event: event,
         properties: properties,
         id: get_uid(),
-        version: VERSION
+        version: VERSION,
+        key: tbAnalytics.config.key
       },
       success: function() {},
       error: function() {}
@@ -49,7 +51,7 @@ require('bower_components/jquery/dist/jquery.min');
     console.log(id, properties);
 
     var oldId = get_uid();
-    if (oldId.slice(0, ANON_PREFIX.length) === ANON_PREFIX) {
+    if (oldId.slice(0, ANON_PREFIX.length) !== ANON_PREFIX) {
       oldId = null;
     }
 
@@ -63,7 +65,8 @@ require('bower_components/jquery/dist/jquery.min');
         oldId: oldId,
         newId: uid,
         properties: properties,
-        version: VERSION
+        version: VERSION,
+        key: tbAnalytics.config.key
       },
       success: function() {},
       error: function() {}
@@ -90,6 +93,10 @@ require('bower_components/jquery/dist/jquery.min');
     pollForURLChanges(function() {
       tbAnalytics.page();
     });
+  }
+
+  if (tbAnalytics.config.trackDistinctReferrers) {
+    // TODO
   }
 
 

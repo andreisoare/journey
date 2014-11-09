@@ -73,7 +73,8 @@ Paste this snippet into the header of your site:
 
   // Load TB Analytics with your key and custom configuration.
   window.tbAnalytics.load('PROJECT_KEY', {
-    trackPages: true
+    trackPages: true,
+    trackDistinctReferrers: true
   });
 </script>
 ```
@@ -92,3 +93,7 @@ Use the following methods in your web application:
 
 * `tbAnalytics.track(eventName, eventProperties);`
 * `tbAnalytics.identify(userId, userProperties);`
+
+## TODO
+
+Replace jQuery with something smaller.
