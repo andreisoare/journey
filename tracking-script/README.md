@@ -77,3 +77,18 @@ Paste this snippet into the header of your site:
   });
 </script>
 ```
+
+## Configuration
+
+You need to specify a valid `PROJECT_KEY` on the `window.tbAnalytics.load`
+method. You can also specify your own custom configuration flags:
+
+* trackPages: (default: true) automatically sends a "Page View" event for every
+  page visited.
+
+## Usage
+
+Use the following methods in your web application:
+
+* `tbAnalytics.track(eventName, eventProperties);`
+* `tbAnalytics.identify(userId, userProperties);`
