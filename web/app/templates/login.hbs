@@ -1,0 +1,23 @@
+<div class="title-avatar">
+  {{gravatar-image email=email alt='Avatar' size="250" defaultAvatar=defaultAvatar}}
+</div>
+
+<h1>Journey</h1>
+
+<form class="form-horizontal" {{action "login" on="submit"}}>
+  <div class="form-input">
+    {{input placeholder="Your email" value=email type="text"}}
+  </div>
+
+  <div class="form-input">
+    {{input placeholder="Your password" value=password type="password"}}
+  </div>
+
+  <button type="submit" class="btn" {{bind-attr disabled="loginWaiting"}}>
+    Log in
+  </button>
+
+  {{#if loginError}}
+    <div class="error">{{loginError}}</div>
+  {{/if}}
+</form>
