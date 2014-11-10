@@ -16,7 +16,7 @@ module.exports = function(app) {
         context.body = { success: false }
       } else {
         yield context.login(user)
-        context.body = {user: user}
+        context.body = {account: user}
       }
     }).call(this);
   }));
