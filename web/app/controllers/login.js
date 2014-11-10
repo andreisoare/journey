@@ -15,7 +15,8 @@ export default Ember.Controller.extend({
 
   success: function(data, textStatus, jqXHR) {
     this.reset();
-    var account = this.store.push(data.account);
+    this.store.pushPayload(data);
+    var account = this.store.recordForId(data.account._id);
     this.set('session.account', account);
     var transition = this.get('session.transition');
     if (transition) {
