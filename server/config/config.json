@@ -3,5 +3,9 @@
 		"name": "analytics",
 		"host": "127.0.0.1",
 		"port": 27017
+	},
+	"app": {
+		"port": 3000,
+		"keys": ["gdghackaton"]
 	}
 }

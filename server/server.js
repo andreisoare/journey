@@ -1,22 +1,12 @@
 var koa = require('koa');
-var logger = require('koa-logger');
 var route = require('koa-route');
+
 var conn = require('./database/connection');
 
 var app = koa();
 
-app.use(logger());
-
-app.use(route.get('/api/stats', getStats));
-
-function *getStats() {
-	try {
-		var account = yield conn.model('Account').find({}).exec();
-		this.body = account;
-	} catch(err) {
-		console.log(err);
-	}
-}
+require('./middleware/koa-config')(app);
+require('./router/routes/admin')(app);
 
 conn.once('open', function() {
 	app.listen(3000);
