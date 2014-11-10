@@ -4,20 +4,20 @@ var thunkify = require('thunkify');
 
 
 module.exports = function(app) {
-	app.use(route.get('/api/web/1/accounts', function*() {
-		this.body = [];
-	}));
-	app.use(route.post('/api/web/1/login', function*() {
-		var context = this;
-		yield* passport.authenticate('local', function*(err, user, info) {
-	    if (err) throw err
-	    if (user === false) {
-	      context.status = 401
-	      context.body = { success: false }
-	    } else {
-	      yield context.login(user)
-	      context.body = {user: user}
-	    }
-	  }).call(this);
-	}));
+  app.use(route.get('/api/web/1/accounts', function*() {
+    this.body = {accounts: []};
+  }));
+  app.use(route.post('/api/web/1/login', function*() {
+    var context = this;
+    yield* passport.authenticate('local', function*(err, user, info) {
+      if (err) throw err
+      if (user === false) {
+        context.status = 401
+        context.body = { success: false }
+      } else {
+        yield context.login(user)
+        context.body = {user: user}
+      }
+    }).call(this);
+  }));
 };
