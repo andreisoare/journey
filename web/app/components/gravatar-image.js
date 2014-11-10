@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  size: 250,
+  size: 100,
   email: '',
   alt: '',
   defaultAvatar: '',
