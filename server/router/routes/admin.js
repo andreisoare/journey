@@ -6,7 +6,7 @@ var thunkify = require('thunkify');
 module.exports = function(app) {
 	app.use(route.post('/api/web/1/accounts', function*() {
 		this.body = [];
-	});
+	}));
 	app.use(route.post('/api/web/1/login', function*() {
 		var context = this;
 		yield* passport.authenticate('local', function*(err, user, info) {
