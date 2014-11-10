@@ -13,7 +13,9 @@
     "koa-bodyparser": "1.2.0",
     "passport-local": "^1.0.0",
     "co": "3.1.0",
-    "bcrypt": "0.8.0"
+    "bcrypt": "0.8.0",
+    "MD5": "1.2.1",
+    "thunkify": "2.1.2"
   },
   "engines": {
     "node": ">= 0.11.14"

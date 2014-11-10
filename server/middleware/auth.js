@@ -11,17 +11,19 @@ passport.deserializeUser(function(id, done) {
 	conn.model('User').findById(id, done);
 });
 
-function UserAuth(username, password, done) {  
+function LocalAuth(email, password, done) {  
+  console.log('userAuth', email, password);
   co(function *() {
     try {
-      return yield User.matchCredentials(username, password);
+      return yield conn.model('User').matchCredentials(email, password);
     } catch (error) {
+    	console.log(error);
       return null;
     }
   })(done);
 };
 
-passport.use(new LocalStrategy(UserAuth));
+passport.use('local', new LocalStrategy({usernameField: 'email'}, LocalAuth));
 
 module.exports = passport;
 
