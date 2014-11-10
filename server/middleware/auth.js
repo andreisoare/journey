@@ -12,7 +12,6 @@ passport.deserializeUser(function(id, done) {
 });
 
 function LocalAuth(email, password, done) {  
-  console.log('userAuth', email, password);
   co(function *() {
     try {
       return yield conn.model('User').matchCredentials(email, password);
