@@ -45,7 +45,7 @@ export default Ember.Controller.extend({
       });
 
       var email = this.get('email');
-      var password = md5(this.get('password'));
+      var password = this.get('password');
 
       if (!email) {
         this.failure(null, 'error', 'Invalid email');
@@ -57,7 +57,10 @@ export default Ember.Controller.extend({
         return;
       }
 
-      var request = Ember.$.post("/api/web/1/login", this.getProperties("email", "password"));
+      var request = Ember.$.post("/api/web/1/login", {
+        email: email,
+        password: md5(password)
+      });
       request.then(this.success.bind(this), this.failure.bind(this));
     }
   }
