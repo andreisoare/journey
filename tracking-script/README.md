@@ -51,7 +51,7 @@ Paste this snippet into the header of your site:
   // Define a method to load TB Analytics from our CDN,
   // and that will be sure to only ever load it once.
   window.tbAnalytics.load = function(key, config) {
-    if (document.getElementById('tb-analytics')) return;
+    if (document.getElementById('tb-journey')) return;
 
     // Set the user preferred config.
     window.tbAnalytics.config = config || {};
@@ -60,11 +60,11 @@ Paste this snippet into the header of your site:
     // Create an async script element based on your key.
     var script = document.createElement('script');
     script.type = 'text/javascript';
-    script.id = 'tb-analytics';
+    script.id = 'tb-journey';
     script.async = true;
     script.src = ('https:' === document.location.protocol
       ? 'https://' : 'http://')
-      + 'analytics.talentbuddy.co/analytics.min.js';
+      + 'journey.talentbuddy.co/journey.min.js';
 
     // Insert our script next to the first script element.
     var first = document.getElementsByTagName('script')[0];

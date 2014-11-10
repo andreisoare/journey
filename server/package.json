@@ -1,7 +1,7 @@
 {
-  "name": "tb-analytics-server",
+  "name": "journey-server",
   "version": "0.1.0",
-  "description": "Talentbuddy Analytics",
+  "description": "Journey",
   "dependencies": {
     "koa": "0.13.0",
     "koa-route": "2.2.0",
