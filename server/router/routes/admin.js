@@ -4,7 +4,7 @@ var thunkify = require('thunkify');
 
 
 module.exports = function(app) {
-	app.use(route.post('/api/web/1/accounts', function*() {
+	app.use(route.get('/api/web/1/accounts', function*() {
 		this.body = [];
 	}));
 	app.use(route.post('/api/web/1/login', function*() {
