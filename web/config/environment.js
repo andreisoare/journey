@@ -45,10 +45,10 @@ module.exports = function(environment) {
 
   ENV.contentSecurityPolicy = {
     'default-src': "'none'",
-    'script-src': "'self'",
+    'script-src': "'self' 'unsafe-eval' 172.16.15.128:35729",
     'font-src': "'self'",
-    'connect-src': "'self'",
-    'img-src': "'self'",
+    'connect-src': "'self' ws://172.16.15.128:35729",
+    'img-src': "'self' www.gravatar.com *.wp.com",
     'style-src': "'self'",
     'media-src': "'self'"
   }

@@ -20,7 +20,6 @@ export default Ember.Controller.extend({
     this.set('session.account', account);
     var transition = this.get('session.transition');
     if (transition) {
-      // TODO: send session.get('queryParams') as well
       transition.retry();
     } else {
       this.transitionToRoute("users", {queryParams: {sortBy: 'created'}});
