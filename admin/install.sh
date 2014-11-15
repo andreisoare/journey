@@ -28,7 +28,7 @@ sudo /etc/init.d/ssh restart
 
 # copy id_rsa and authorized_keys
 
-# configure iptables to block mongo access
+# TODO: configure iptables to block mongo access
 
 # node
 curl https://raw.githubusercontent.com/creationix/nvm/v0.18.0/install.sh | bash
