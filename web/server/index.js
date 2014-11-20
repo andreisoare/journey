@@ -9,6 +9,13 @@ module.exports = function(app) {
     extended: true
   }));
 
+  // Delay response to simulate network lag.
+  app.use(function(req, res, next) {
+    setTimeout(function() {
+      next();
+    }, 750);
+  });
+
   mocks.forEach(function(route) { route(app); });
 
   // proxy expects a stream, but express will have turned

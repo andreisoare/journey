@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export function initialize(container, app) {
+export function initialize(container, application) {
   var Session = Ember.Object.extend({
     account: null,
 
@@ -9,10 +9,11 @@ export function initialize(container, app) {
     }.property('account')
   });
 
-  app.register('session:main', Session);
-  app.inject('route', 'session', 'session:main');
-  app.inject('controller', 'session', 'session:main');
+  application.register('session:main', Session);
+  application.inject('route', 'session', 'session:main');
+  application.inject('controller', 'session', 'session:main');
 }
+
 
 export default {
   name: 'session',
