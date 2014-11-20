@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "journey",
   "dependencies": {
     "handlebars": ">= 2.0.0 < 3.0.0",
     "jquery": "^1.11.1",

@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "journey",
   "version": "0.0.0",
   "private": true,
   "directories": {
@@ -26,6 +26,7 @@
     "ember-cli-htmlbars": "^0.2.2",
     "ember-cli-ic-ajax": "0.1.1",
     "ember-cli-inject-live-reload": "^1.3.0",
+    "ember-cli-less": "^1.0.5",
     "ember-cli-qunit": "0.1.0",
     "ember-data": "1.0.0-beta.10",
     "ember-export-application-global": "^1.0.0",

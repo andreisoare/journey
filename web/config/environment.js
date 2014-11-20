@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'web',
+    modulePrefix: 'journey',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
@@ -45,9 +45,9 @@ module.exports = function(environment) {
 
   ENV.contentSecurityPolicy = {
     'default-src': "'none'",
-    'script-src': "'self' 'unsafe-eval' 172.16.15.128:35729",
+    'script-src': "'self' 'unsafe-eval' 127.0.0.1:35729",
     'font-src': "'self'",
-    'connect-src': "'self' ws://172.16.15.128:35729",
+    'connect-src': "'self' ws://127.0.0.1:35729",
     'img-src': "'self' www.gravatar.com *.wp.com",
     'style-src': "'self'",
     'media-src': "'self'"

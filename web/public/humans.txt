@@ -1,0 +1,15 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Andrei Soare -- developer -- andreisoare
+
+# THANKS
+
+    Diana Tiriplica
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3
+    Ember
