@@ -1,6 +1,6 @@
 // Avoid `console` errors in browsers that lack a console.
 
-export function initialize(container, app) {
+export function initialize(container, application) {
   var method;
   var noop = function () {};
   var methods = [

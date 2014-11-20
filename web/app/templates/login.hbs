@@ -6,11 +6,11 @@
 
 <form class="form-horizontal" {{action "login" on="submit"}}>
   <div class="form-input">
-    {{input placeholder="Your email" value=email type="text"}}
+    {{input placeholder="Your email" value=email type="text" name="email"}}
   </div>
 
   <div class="form-input">
-    {{input placeholder="Your password" value=password type="password"}}
+    {{input placeholder="Your password" value=password type="password" name="password"}}
   </div>
 
   <button type="submit" class="btn" {{bind-attr disabled="loginWaiting"}}>
@@ -19,5 +19,11 @@
 
   {{#if loginError}}
     <div class="error">{{loginError}}</div>
+  {{/if}}
+
+  {{#if loginWaiting}}
+    <div class="waiting">
+      <img src="img/preloader-horizontal-black.gif"/>
+    </div>
   {{/if}}
 </form>
