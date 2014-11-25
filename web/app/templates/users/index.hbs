@@ -1,0 +1,10 @@
+<div class="user-list-content">
+<ul>
+  {{#each user in controller}}
+    <li>
+      {{#link-to "user" user}}
+      {{user-block user=user}}
+      {{/link-to}}
+    </li>
+  {{/each}}
+</div>

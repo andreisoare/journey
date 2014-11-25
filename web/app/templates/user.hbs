@@ -1,4 +1,15 @@
 {{link-to "< All" "users"}}
 
-{{gravatar-image email=email alt='Avatar' size="100" defaultAvatar=defaultAvatar}}
-{{fullName}} | {{ago created}}
+{{user-block user=model}}
+
+{{#if loadingEvents}}
+  Loading events
+{{/if}}
+
+{{#if errorLoadingEvents}}
+  Error loading events
+{{/if}}
+
+{{#each event in events}}
+  {{event-block event=event}}
+{{/each}}

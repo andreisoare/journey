@@ -35,5 +35,13 @@ module.exports = function(app) {
       }
     ]});
   });
+  usersRouter.get('/:user_id', function(req, res) {
+    res.send({"user": {
+      _id: req.params.user_id,
+      last_name: "Haven",
+      email: req.params.user_id,
+      created: new Date(2014, 5, 6, 8, 7, 0)
+    }});
+  });
   app.use('/api/web/1/users', usersRouter);
 };

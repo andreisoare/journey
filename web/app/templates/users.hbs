@@ -6,15 +6,6 @@
   <div class="user-list-header">
     Contact | Signup date
   <div>
-  <div class="user-list-content">
-    <ul>
-      {{#each user in controller}}
-        <li>
-          {{#link-to "user" user}}
-            {{gravatar-image email=user.email alt='Avatar' size="100" defaultAvatar=user.defaultAvatar}}
-            {{user.fullName}} | {{ago user.created}}
-          {{/link-to}}
-        </li>
-      {{/each}}
-  </div>
+
+  {{outlet}}
 </div>
