@@ -17,6 +17,11 @@ var app = new EmberApp();
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
+// JS
 app.import(app.bowerDirectory + '/JavaScript-MD5/js/md5.js');
+
+// CSS
+app.import(app.bowerDirectory + '/normalize.css/normalize.css');
+app.import(app.bowerDirectory + '/html5-boilerplate/css/main.css');
 
 module.exports = app.toTree();

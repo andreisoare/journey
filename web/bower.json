@@ -18,5 +18,9 @@
   },
   "resolutions": {
     "handlebars": ">= 2.0.0 < 3.0.0"
+  },
+  "devDependencies": {
+    "normalize.css": "~3.0.2",
+    "html5-boilerplate": "~4.3.0"
   }
 }
