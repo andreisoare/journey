@@ -2,7 +2,6 @@ module.exports = function(app) {
   var express = require('express');
   var eventsRouter = express.Router();
   eventsRouter.get('/', function(req, res) {
-    console.log(req.params.user, req.params);
     res.send({"events":[
       {
         _id: 1,

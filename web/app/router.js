@@ -8,8 +8,8 @@ var Router = Ember.Router.extend({
 // TODO: user.loading route doesn't work properly.
 Router.map(function() {
   this.route('login', {path: '/'});
-  this.resource('users', function() {});
-  this.resource('user', {path: '/users/:user_id'});
+  this.route('users', function() {});
+  this.route('user', {path: '/users/:user_id'});
   this.route('catchall', {path: '/*wildcard'});
 });
 
