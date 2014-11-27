@@ -5,12 +5,14 @@ var Router = Ember.Router.extend({
   location: config.locationType
 });
 
-// TODO: user.loading route doesn't work properly.
 Router.map(function() {
   this.route('login', {path: '/'});
   this.route('users', function() {});
-  this.route('user', {path: '/users/:user_id'});
+  this.route('user', {path: '/users/:user_id'}, function() {
+    this.route('events', {path: '/'});
+  });
   this.route('catchall', {path: '/*wildcard'});
+  this.route('user/events');
 });
 
 export default Router;

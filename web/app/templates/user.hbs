@@ -2,14 +2,4 @@
 
 {{user-block user=model}}
 
-{{#if loadingEvents}}
-  Loading events
-{{/if}}
-
-{{#if errorLoadingEvents}}
-  Error loading events
-{{/if}}
-
-{{#each event in events}}
-  {{event-block event=event}}
-{{/each}}
+{{outlet}}
