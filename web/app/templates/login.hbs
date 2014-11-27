@@ -1,29 +1,15 @@
-<div class="title-avatar">
-  {{gravatar-image email=email alt='Avatar' size="100" defaultAvatar=defaultAvatar}}
+<div class="login-wrapper">
+  <div class="avatar">
+    {{gravatar-image email=email alt="Avatar" size="100" defaultAvatar=defaultAvatar}}
+  </div>
+
+  <div class="title">Journey</div>
+
+  <form class="form" {{action "login" on="submit"}}>
+    {{input placeholder="Your email" value=email type="text" name="email" class="input"}}
+    {{input placeholder="Your password" value=password type="password" name="password" class="input"}}
+    <button class="blue-btn" type="submit" class="btn" {{bind-attr disabled="loginWaiting"}}>Log in</button>
+    {{#if loginError}}<div class="error">{{loginError}}</div>{{/if}}
+    {{#if loginWaiting}}<img class="waiting" src="img/preloader-horizontal-black.gif"/>{{/if}}
+  </form>
 </div>
-
-<h1>Journey</h1>
-
-<form class="form-horizontal" {{action "login" on="submit"}}>
-  <div class="form-input">
-    {{input placeholder="Your email" value=email type="text" name="email"}}
-  </div>
-
-  <div class="form-input">
-    {{input placeholder="Your password" value=password type="password" name="password"}}
-  </div>
-
-  <button type="submit" class="btn" {{bind-attr disabled="loginWaiting"}}>
-    Log in
-  </button>
-
-  {{#if loginError}}
-    <div class="error">{{loginError}}</div>
-  {{/if}}
-
-  {{#if loginWaiting}}
-    <div class="waiting">
-      <img src="img/preloader-horizontal-black.gif"/>
-    </div>
-  {{/if}}
-</form>
