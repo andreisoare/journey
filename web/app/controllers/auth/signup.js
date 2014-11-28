@@ -1,17 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  email: '',
+  needs: ['auth'],
+
+  name: '',
+  email: Ember.computed.alias('controllers.auth.email'),
   password: '',
 
-  loginError: false,
-  loginWaiting: false,
-
-  defaultAvatar: function() {
-    var url = window.location.href;
-    var arr = url.split('/');
-    return arr[0] + "//" + arr[2] + "/img/avatars/avatar-blue.png";
-  }.property(),
+  signupError: false,
+  signupWaiting: false,
 
   success: function(data, textStatus, jqXHR) {
     this.reset();
@@ -28,24 +25,30 @@ export default Ember.Controller.extend({
 
   failure: function(jqXHR, textStatus, errorThrown) {
     this.reset();
-    this.set("loginError", errorThrown);
+    this.set("signupError", errorThrown);
   },
 
   reset: function() {
     this.setProperties({
-      loginWaiting: false,
+      signupWaiting: false,
     });
   },
 
   actions: {
-    login: function() {
+    signup: function() {
       this.setProperties({
-        loginError: false,
-        loginWaiting: true
+        signupError: false,
+        signupWaiting: true
       });
 
+      var name = this.get('name');
       var email = this.get('email');
       var password = this.get('password');
+
+      if (!name) {
+        this.failure(null, 'error', 'Invalid name');
+        return;
+      }
 
       if (!email) {
         this.failure(null, 'error', 'Invalid email');
@@ -57,7 +60,8 @@ export default Ember.Controller.extend({
         return;
       }
 
-      var request = Ember.$.post("/api/web/1/login", {
+      var request = Ember.$.post("/api/web/1/signup", {
+        name: name,
         email: email,
         password: md5(password)
       });

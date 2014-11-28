@@ -1,0 +1,8 @@
+<form class="form" {{action "login" on="submit"}}>
+  {{input placeholder="Your email" value=email type="text" name="email" class="input"}}
+  {{input placeholder="Your password" value=password type="password" name="password" class="input"}}
+  <button class="blue-btn submit" type="submit" class="btn" {{bind-attr disabled="loginWaiting"}}>Log in</button>
+  <div class="auth-alternative">or {{link-to "Sign up" "auth.signup" class="blue-link"}}</div>
+  {{#if loginError}}<div class="error">{{loginError}}</div>{{/if}}
+  {{#if loginWaiting}}<img class="waiting" src="img/preloader-horizontal-black.gif"/>{{/if}}
+</form>
