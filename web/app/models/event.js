@@ -5,7 +5,7 @@ var attr = DS.attr;
 export default DS.Model.extend({
   user: DS.belongsTo('user'),
   name: attr(),
-  timestamp: attr('number'),
+  created: attr('date'),
   referrer: attr(),
   campaign: attr(),
   browser: attr(),

@@ -1,0 +1,23 @@
+{{link-to "< All contacts" "users.index" tag="div" class="breadcrumbs"}}
+
+<div class="user-title">
+  {{gravatar-image email=email alt='Avatar' size="70" defaultAvatar=defaultAvatar class="avatar"}}
+  <div class="name">{{fullName}}</div>
+  <div class="clearfix"></div>
+</div>
+
+<div class="properties">
+  <div class="left">
+    {{#each property in displayProperties}}
+      <div class="property">{{property}}:</div>
+    {{/each}}
+  </div>
+  <div class="right">
+    {{#each value in displayPropertyValues}}
+      <div class="value">{{value}}</div>
+    {{/each}}
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+{{outlet}}

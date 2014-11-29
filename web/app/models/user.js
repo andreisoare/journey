@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import { moment, ago } from 'ember-moment/computed';
 
 var attr = DS.attr;
 
@@ -14,6 +15,8 @@ export default DS.Model.extend({
   city: attr(),
   lastIpUsed: attr(),
   properties: attr('object'),
+
+  createdAgo: ago('created', true),
 
   fullName: function() {
     return this.get('name') ||

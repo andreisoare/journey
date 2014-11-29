@@ -1,10 +1,14 @@
-<div class="user-list-content">
-<ul>
+{{input placeholder="Who are you searching for?" value=searchText type="text" name="search" class="input search"}}
+
+<div class="users-header">
+  <div class="left">Contact</div>
+  <div class="right">Sign up date</div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="users-list">
   {{#each user in controller}}
-    <li>
-      {{#link-to "user" user}}
-      {{user-block user=user}}
-      {{/link-to}}
-    </li>
+    {{user-block user=user}}
   {{/each}}
 </div>

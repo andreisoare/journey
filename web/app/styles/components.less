@@ -1,5 +1,11 @@
 // Reusable css classes
 
+.fixed-width-wrapper {
+  width: 290px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .blue-btn {
   height: 40px;
   font-size: 16px;
@@ -27,6 +33,26 @@
   font-weight: 600;
 }
 
+.black-link {
+  color: @black;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.input {
+  height: 40px;
+  font-size: 14px;
+  padding: 0 14px;
+  border: 1px solid #aaa;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
 .global-preloader {
   position: absolute;
   top: 50%;
@@ -35,8 +61,4 @@
   width: 77px;
   margin-left: -39px;
   margin-top: -4px;
-}
-
-.local-preloader {
-
 }

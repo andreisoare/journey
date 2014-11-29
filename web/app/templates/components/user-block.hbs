@@ -1,3 +1,6 @@
-{{gravatar-image email=user.email alt='Avatar' size="100" defaultAvatar=user.defaultAvatar}}
-
-{{user.fullName}} | {{ago user.created}}
+{{#link-to "users.user" user tag="div" class="user-block"}}
+  {{gravatar-image email=user.email alt='Avatar' size="50" defaultAvatar=user.defaultAvatar class="avatar"}}
+  <div class="name">{{user.fullName}}</div>
+  <div class="date">{{ago user.created}}</div>
+  <div class="clearfix"></div>
+{{/link-to}}
