@@ -77,3 +77,8 @@ Event
  * `/dashboard` (list of users sorted by created) -> fetch User sortBy, chunkSize, page; search by custom field
     * `store.find('user', {email: "test@gmail.com", page: 1, chunkSize: 100, sortBy: "created"});`
  * `/:user_id` (for one user, list of events sorted by timestamp) -> fetch Event sortBy, chunkSize, page
+
+## TODO
+
+ * preload authenticated user from backend
+ * preload user in the user route from backend
