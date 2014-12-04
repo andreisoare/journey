@@ -2,7 +2,7 @@ module.exports = function(app) {
   var express = require('express');
   var accountsRouter = express.Router();
   accountsRouter.get('/', function(req, res) {
-    return res.send({"accounts":[]});
+    //return res.send({"accounts":[]});
 
     if (req.query.authenticated) {
       res.send({"accounts": [
