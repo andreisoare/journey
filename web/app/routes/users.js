@@ -1,5 +1,10 @@
 import Ember from 'ember';
-import AuthenticatedRoute from 'journey/routes/authenticated';
 
-export default AuthenticatedRoute.extend({
+export default Ember.Route.extend({
+  beforeModel: function(transition) {
+    if (!this.get('session.isAuthenticated')) {
+      this.set('session.transition', transition);
+      this.transitionTo('auth.login');
+    }
+  }
 });

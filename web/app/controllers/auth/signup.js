@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import Validator from 'journey/mixins/validator';
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(Validator, {
   needs: ['auth'],
 
   name: '',
@@ -50,7 +51,7 @@ export default Ember.Controller.extend({
         return;
       }
 
-      if (!email) {
+      if (!email || !this.validEmail(email)) {
         this.failure(null, 'error', 'Invalid email');
         return;
       }

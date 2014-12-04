@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.ArrayController.extend({
+export default Ember.Controller.extend({
   needs: ['auth'],
   defaultAvatar: Ember.computed.alias('controllers.auth.defaultAvatar'),
 
