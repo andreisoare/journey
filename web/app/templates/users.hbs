@@ -1,12 +1,13 @@
-<div class="nav-bar">
-  <div class="content">
-    {{gravatar-image email=session.account.email alt="Avatar" size="40" defaultAvatar=defaultAvatar class="avatar"}}
-    <div class="title">Journey</div>
-    <div class="logout" {{action "logout"}}>Logout</div>
-    <div class="clearfix"></div>
-  </div>
-</div>
+{{nav-bar session=session}}
 
 <div class="users-wrapper">
+  {{input placeholder="Who are you searching for?"
+          value=searchText
+          type="text"
+          name="search"
+          class="input search"
+          action="search"
+          on="enter"}}
+
   {{outlet}}
 </div>

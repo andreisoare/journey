@@ -1,4 +1,4 @@
-{{#link-to "users.user" user tag="div" class="user-block"}}
+{{#link-to "user" user tag="div" class="user-block"}}
   {{gravatar-image email=user.email alt='Avatar' size="50" defaultAvatar=user.defaultAvatar class="avatar"}}
   <div class="name">{{user.fullName}}</div>
   <div class="date">{{ago user.created}}</div>

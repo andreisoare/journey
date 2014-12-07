@@ -12,9 +12,10 @@ Router.map(function() {
   });
 
   this.route('users', function() {
-    this.route('user', {path: '/:user_id'}, function() {
-      this.route('events', {path: '/'});
-    });
+  });
+
+  this.route('user', {path: '/users/:user_id'}, function() {
+    this.route('events', {path: '/'});
   });
 
   this.route('catchall', {path: '/*wildcard'});
