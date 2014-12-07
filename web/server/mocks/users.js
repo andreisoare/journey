@@ -1,49 +1,84 @@
+function randomDate(start, end) {
+  return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+}
+
+var users = [
+  "Lucienne Richart",
+  "Afton Vang",
+  "Arlie Weckerly",
+  "Darrel Hereford",
+  "Kaitlyn Nghiem",
+  "Tamala Breau",
+  "Mel Overstreet",
+  "Kathlyn Poat",
+  "Dirk Maes",
+  "Machelle Nishioka",
+  "Ramona Kazee",
+  "Kay Breeden",
+  "Lorretta Balboa",
+  "Elizabet Kirschbaum",
+  "Veronika Limones",
+  "Majorie Scarborough",
+  "Priscila Hitchcock",
+  "Cassondra Dresel",
+  "Sherell Plotner",
+  "Mikki Medel",
+  "Eveline Munday",
+  "Tyra Mahaney",
+  "Daina Arndt",
+  "Carla Hopp",
+  "Clementina Elliot",
+  "Hoa Palmeri",
+  "Sydney Chappell",
+  "Idell Blystone",
+  "Oren Dobson",
+  "Tobie Wynn",
+  "Loris Hassan",
+  "Monte Cowboy",
+  "Bari Rangel",
+  "Shaneka Bjornson",
+  "Kathern Campisi",
+  "Lucrecia Lymon",
+  "Greg Alles",
+  "Angle Posada",
+  "Bryce Peed",
+  "Debra Evitt",
+  "Latonya Fling",
+  "Tama Poudrier",
+  "Carlene Hahne",
+  "Cole Burbank",
+  "Ronnie Babin",
+  "Jeri Bruck",
+  "Anjanette Nabors",
+  "Hailey Matula",
+  "Liana Cummins",
+  "Bulah Levitsky"
+];
+
+var userObjects = users.map(function(user, index) {
+  return {
+    _id: "u" + index,
+    name: user,
+    email: user.toLowerCase().replace(' ', '.') + '@gmail.com',
+    created: randomDate(new Date(2014, 0, 1), new Date())
+  };
+});
+
 module.exports = function(app) {
   var express = require('express');
   var usersRouter = express.Router();
 
   usersRouter.get('/', function(req, res) {
-    res.send({"users":[
-      {
-        _id: "haven@gmail.com",
-        last_name: "Haven",
-        email: "haven@gmail.com",
-        created: new Date(2014, 5, 6, 8, 7, 0).getTime()
-      },
-      {
-        _id: "tobin@gmail.com",
-        first_name: "Tobin",
-        email: "tobin@gmail.com",
-        created: new Date(2014, 7, 6, 8, 7, 0).getTime()
-      },
-      {
-        _id: "harland@gmail.com",
-        name: "Harland",
-        email: "harland@gmail.com",
-        created: new Date(2014, 4, 6, 8, 7, 0).getTime()
-      },
-      {
-        _id: "xavier@gmail.com",
-        name: "Xavier Neville",
-        email: "xavier@gmail.com",
-        created: new Date(2014, 6, 6, 8, 7, 0).getTime()
-      },
-      {
-        _id: "brock@gmail.com",
-        first_name: "Brock",
-        email: "brock@gmail.com",
-        created: new Date(2014, 3, 6, 8, 7, 0).getTime()
-      }
-    ]});
+    var chunkSize = parseInt(req.query.chunkSize);
+    var chunk = parseInt(req.query.chunk);
+    var users = userObjects.slice(chunk * chunkSize, (chunk + 1) * chunkSize);
+    res.send({"users": users});
   });
 
-  usersRouter.get('/:user_id', function(req, res) {
-    res.send({"user": {
-      _id: req.params.user_id,
-      last_name: "Haven",
-      email: req.params.user_id,
-      created: new Date(2014, 5, 6, 8, 7, 0).getTime()
-    }});
+  usersRouter.get('/:id', function(req, res) {
+    var id = req.params.id;
+    var index = parseInt(id.slice(1));
+    res.send({"user": userObjects[index]});
   });
 
   app.use('/api/web/1/users', usersRouter);
