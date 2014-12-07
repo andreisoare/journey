@@ -1,6 +1,7 @@
 module.exports = function(app) {
   var express = require('express');
   var usersRouter = express.Router();
+
   usersRouter.get('/', function(req, res) {
     res.send({"users":[
       {
@@ -35,6 +36,7 @@ module.exports = function(app) {
       }
     ]});
   });
+
   usersRouter.get('/:user_id', function(req, res) {
     res.send({"user": {
       _id: req.params.user_id,
@@ -43,5 +45,6 @@ module.exports = function(app) {
       created: new Date(2014, 5, 6, 8, 7, 0).getTime()
     }});
   });
+
   app.use('/api/web/1/users', usersRouter);
 };
