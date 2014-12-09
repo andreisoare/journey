@@ -9,4 +9,8 @@
   {{#each user in controller}}
     {{user-block user=user}}
   {{/each}}
+
+  {{#infinite-scroll content=model hasMore=hasMore}}
+    <img class="loading" src="/img/preloader-horizontal-black.gif"/>
+  {{/infinite-scroll}}
 </div>

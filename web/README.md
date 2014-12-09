@@ -83,4 +83,3 @@ Event
  * preload authenticated user from backend
  * preload user in the user route from backend
  * implement search
- * display loading state on loadMore in users/index route

@@ -9,12 +9,8 @@ export default Ember.Route.extend({
 
   chunkSize: 10,
   chunk: 0,
-  hasMore: true,
 
   model: function(params) {
-    this.set('hasMore', true);
-    this.set('chunk', 0);
-
     var query = {
       chunkSize: this.get('chunkSize'),
       chunk: this.get('chunk')
@@ -27,27 +23,13 @@ export default Ember.Route.extend({
     return this.store.find('user', query);
   },
 
-  actions: {
-    loadMore: function() {
-      if (!this.get('hasMore')) {
-        return;
-      }
+  setupController: function(controller, model) {
+    this._super(controller, model);
 
-      this.set('chunk', this.get('chunk') + 1);
-
-      var query = {
-        chunkSize: this.get('chunkSize'),
-        chunk: this.get('chunk'),
-        q: this.get('controller.q')
-      };
-
-      var route = this;
-      this.store.find('user', query).then(function(users) {
-        if (!users || users.get('length') === 0) {
-          route.set('hasMore', false);
-        }
-        route.modelFor('users/index').addObjects(users);
-      });
-    }
+    controller.setProperties({
+      chunkSize: this.get('chunkSize'),
+      chunk: this.get('chunk'),
+      hasMore: model.get('length') > 0,
+    })
   }
 });

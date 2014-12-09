@@ -35,6 +35,7 @@
     "morgan": "^1.5.0"
   },
   "dependencies": {
+    "ember-infinite-scroll": "^0.1.2",
     "ember-moment": "^1.0.0"
   }
 }
