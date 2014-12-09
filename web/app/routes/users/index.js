@@ -8,24 +8,15 @@ export default Ember.Route.extend({
   },
 
   model: function(params) {
-    var query = {
+    return this.store.find('user', {
       chunkSize: 20,
-      chunk: 0
-    };
-
-    if (params.q) {
-      query.q = params.q;
-    }
-
-    return this.store.find('user', query);
+      chunk: 0,
+      q: params.q
+    });
   },
 
   setupController: function(controller, model) {
     this._super(controller, model);
-
-    controller.setProperties({
-      chunk: 0,
-      hasMore: this.store.metadataFor('user').total > model.get('length'),
-    })
+    controller.reset();
   }
 });

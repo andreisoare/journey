@@ -6,7 +6,16 @@ export default Ember.ArrayController.extend({
 
   chunkSize: 10,
   chunk: 0,
-  hasMore: true,
+
+  reset: function() {
+    this.set('chunk', 0);
+  }.on('init'),
+
+  hasMore: function() {
+    var total = this.get('model.meta.total');
+    var currentLength = this.get('model.length');
+    return total > currentLength;
+  }.property('model.meta.total', 'model.[]'),
 
   actions: {
     // Triggered by the infinite-scroll component
@@ -20,16 +29,7 @@ export default Ember.ArrayController.extend({
         q: this.get('q')
       };
 
-      var controller = this;
-      var promise = this.store.find('user', query);
-      promise.then(function(users) {
-        var total = controller.store.metadataFor('user').total;
-        var numUsers = users ? users.get('length') : 0;
-        var hasMore = total > controller.get('model.length') + numUsers;
-        controller.set('hasMore', hasMore);
-      });
-
-      cbk(promise);
+      cbk(this.store.find('user', query));
     }
   }
 });
