@@ -4,6 +4,8 @@ export default Ember.ArrayController.extend({
   queryParams: ['q'],
   q: '',
 
+  chunkSize: 10,
+  chunk: 0,
   hasMore: true,
 
   actions: {
@@ -21,9 +23,10 @@ export default Ember.ArrayController.extend({
       var controller = this;
       var promise = this.store.find('user', query);
       promise.then(function(users) {
-        if (!users || users.get('length') === 0) {
-          controller.set('hasMore', false);
-        }
+        var total = controller.store.metadataFor('user').total;
+        var numUsers = users ? users.get('length') : 0;
+        var hasMore = total > controller.get('model.length') + numUsers;
+        controller.set('hasMore', hasMore);
       });
 
       cbk(promise);

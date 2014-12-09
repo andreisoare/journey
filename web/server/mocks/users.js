@@ -71,8 +71,23 @@ module.exports = function(app) {
   usersRouter.get('/', function(req, res) {
     var chunkSize = parseInt(req.query.chunkSize);
     var chunk = parseInt(req.query.chunk);
-    var users = userObjects.slice(chunk * chunkSize, (chunk + 1) * chunkSize);
-    res.send({"users": users});
+
+    var filteredUsers;
+    if (req.query.q) {
+      filteredUsers = userObjects.filter(function(user) {
+        return user.name.toLowerCase().indexOf(req.query.q) !== -1;
+      });
+    } else {
+      filteredUsers = userObjects;
+    }
+
+    var users = filteredUsers.slice(chunk * chunkSize, (chunk + 1) * chunkSize);
+    res.send({
+      "users": users,
+      "meta": {
+        "total": filteredUsers.length
+      }
+    });
   });
 
   usersRouter.get('/:id', function(req, res) {

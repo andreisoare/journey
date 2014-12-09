@@ -7,13 +7,10 @@ export default Ember.Route.extend({
     }
   },
 
-  chunkSize: 10,
-  chunk: 0,
-
   model: function(params) {
     var query = {
-      chunkSize: this.get('chunkSize'),
-      chunk: this.get('chunk')
+      chunkSize: 20,
+      chunk: 0
     };
 
     if (params.q) {
@@ -27,9 +24,8 @@ export default Ember.Route.extend({
     this._super(controller, model);
 
     controller.setProperties({
-      chunkSize: this.get('chunkSize'),
-      chunk: this.get('chunk'),
-      hasMore: model.get('length') > 0,
+      chunk: 0,
+      hasMore: this.store.metadataFor('user').total > model.get('length'),
     })
   }
 });
