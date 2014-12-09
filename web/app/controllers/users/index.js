@@ -22,14 +22,11 @@ export default Ember.ArrayController.extend({
     // http://blog.jasonkriss.com/building-an-infinite-scroll-ember-cli-addon
     fetchMore: function(cbk) {
       this.set('chunk', this.get('chunk') + 1);
-
-      var query = {
+      cbk(this.store.find('user', {
         chunkSize: this.get('chunkSize'),
         chunk: this.get('chunk'),
         q: this.get('q')
-      };
-
-      cbk(this.store.find('user', query));
+      }));
     }
   }
 });
