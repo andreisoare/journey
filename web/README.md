@@ -83,3 +83,9 @@ Event
  * preload authenticated user from backend
  * preload user in the user route from backend
  * implement search
+ * Width too large on mobile
+ * preloader on fetchMore not showing on mobile
+ * fetchMore events on scroll
+ * scroll jumps at top while searching for new query
+ * add tests
+ * keep an eye on "model dependent state". figure out a way to avoid resetting the users/index controller manually.
