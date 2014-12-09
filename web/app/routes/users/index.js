@@ -7,12 +7,28 @@ export default Ember.Route.extend({
     }
   },
 
+  modelCache: Ember.Object.create(),
+
   model: function(params) {
-    return this.store.find('user', {
+    var cache = this.get('modelCache');
+    var cacheKey = "q:" + (params.q || "");
+
+    var oldModel = cache.get(cacheKey);
+    if (oldModel) {
+      return oldModel;
+    }
+
+    var promise = this.store.find('user', {
       chunkSize: 20,
       chunk: 0,
       q: params.q
     });
+
+    promise.then(function(model) {
+      cache.set(cacheKey, model);
+    });
+
+    return promise;
   },
 
   setupController: function(controller, model) {
