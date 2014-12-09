@@ -7,6 +7,9 @@ export default Ember.ArrayController.extend({
   chunkSize: 10,
   chunk: 0,
 
+  // TODO: This is set by the View. Find a data-down approach to do this.
+  scroll: 0,
+
   reset: function() {
     this.set('chunk', 0);
   }.on('init'),
