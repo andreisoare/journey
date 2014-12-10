@@ -15,6 +15,7 @@ export default Ember.Route.extend({
 
     var oldModel = cache.get(cacheKey);
     if (oldModel) {
+      oldModel.set('isCached', true);
       return oldModel;
     }
 
@@ -33,6 +34,8 @@ export default Ember.Route.extend({
 
   setupController: function(controller, model) {
     this._super(controller, model);
-    controller.reset();
+    if (!model.get('isCached')) {
+      controller.reset();
+    }
   }
 });

@@ -80,12 +80,23 @@ Event
 
 ## TODO
 
+### Next
+
+ * scroll jumps at top while searching for new query
+ * fetchMore events on scroll
+ * convert everything to components. delete all Views/Controllers.
+ * add tests
+ * investigate performance issues when loading users route
+ * keep an eye on "model dependent state". figure out a way to avoid resetting the users/index controller manually.
+ * merge users/index with users
+
+### Someday
+
+Server
  * preload authenticated user from backend
  * preload user in the user route from backend
- * implement search
- * Width too large on mobile
+
+Mobile
+ * width too large on mobile. search bar looks weird on mobile.
  * preloader on fetchMore not showing on mobile
- * fetchMore events on scroll
- * scroll jumps at top while searching for new query
- * add tests
- * keep an eye on "model dependent state". figure out a way to avoid resetting the users/index controller manually.
+ * when going to a user profile page the scroll isn't at level 0

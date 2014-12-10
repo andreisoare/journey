@@ -3,7 +3,7 @@
   "dependencies": {
     "handlebars": ">= 2.0.0 < 3.0.0",
     "jquery": "^1.11.1",
-    "ember": "1.9.0-beta.4",
+    "ember": "1.9.0",
     "ember-data": "1.0.0-beta.12",
     "ember-resolver": "~0.1.7",
     "loader.js": "stefanpenner/loader.js#1.0.1",
@@ -15,9 +15,6 @@
     "qunit": "~1.15.0",
     "JavaScript-MD5": "~1.1.0",
     "ember-cli-moment-shim": "~0.0.2"
-  },
-  "resolutions": {
-    "handlebars": ">= 2.0.0 < 3.0.0"
   },
   "devDependencies": {
     "normalize.css": "~3.0.2",

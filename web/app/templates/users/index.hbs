@@ -1,16 +1,26 @@
-<div class="users-header">
-  <div class="left">Contact</div>
-  <div class="right">Sign up date</div>
-</div>
+{{#if model}}
+  <div class="users-header">
+    <div class="left">Contact</div>
+    <div class="right">Sign up date</div>
+  </div>
 
-<div class="clearfix"></div>
+  <div class="clearfix"></div>
 
-<div class="users-list">
-  {{#each user in controller}}
-    {{user-block user=user}}
-  {{/each}}
+  <div class="users-list">
+    {{#each user in controller}}
+      {{user-block user=user}}
+    {{/each}}
 
-  {{#infinite-scroll content=model hasMore=hasMore}}
-    <img class="loading" src="/img/preloader-horizontal-black.gif"/>
-  {{/infinite-scroll}}
-</div>
+    {{#infinite-scroll content=model hasMore=hasMore}}
+      <img class="loading" src="/img/preloader-horizontal-black.gif"/>
+    {{/infinite-scroll}}
+  </div>
+{{else}}
+  <div class="no-data">
+    {{#if q}}
+    No users match your search query.
+    {{else}}
+    You don't have any users yet.
+    {{/if}}
+  </div>
+{{/if}}

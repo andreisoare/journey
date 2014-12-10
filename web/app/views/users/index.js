@@ -2,13 +2,10 @@ import Ember from 'ember';
 
 export default Ember.View.extend({
   saveScroll: function() {
-    this.set('controller.scroll', Ember.$(document).scrollTop());
+    this.get('controller').send('saveScroll', Ember.$(document).scrollTop());
   }.on('willDestroyElement'),
 
   restoreScroll: function() {
-    var scroll = this.get('controller.scroll');
-    if (scroll) {
-      Ember.$(document).scrollTop(scroll);
-    }
+    Ember.$(document).scrollTop(this.get('controller.scroll') || 0);
   }.on('didInsertElement')
 });

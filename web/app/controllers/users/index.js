@@ -7,11 +7,11 @@ export default Ember.ArrayController.extend({
   chunkSize: 10,
   chunk: 0,
 
-  // TODO: This is set by the View. Find a data-down approach to do this.
   scroll: 0,
 
   reset: function() {
     this.set('chunk', 0);
+    this.set('scroll', 0);
   }.on('init'),
 
   hasMore: function() {
@@ -30,6 +30,10 @@ export default Ember.ArrayController.extend({
         chunk: this.get('chunk'),
         q: this.get('q')
       }));
+    },
+
+    saveScroll: function(scroll) {
+      this.set('scroll', scroll);
     }
   }
 });
