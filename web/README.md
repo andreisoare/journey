@@ -82,13 +82,14 @@ Event
 
 ### Next
 
- * scroll jumps at top while searching for new query
- * fetchMore events on scroll
+ * Browser back button doesn't work when transitioning from user to users
+ * add real event fixtures using titles from our blog and urls from hacker news
  * convert everything to components. delete all Views/Controllers.
  * add tests
  * investigate performance issues when loading users route
  * keep an eye on "model dependent state". figure out a way to avoid resetting the users/index controller manually.
  * merge users/index with users
+ * incorporate the grid and font-size from skeleton http://getskeleton.com
 
 ### Someday
 

@@ -20,8 +20,8 @@ export default Ember.Route.extend({
     }
 
     var promise = this.store.find('user', {
-      chunkSize: 20,
-      chunk: 0,
+      limit: 20,
+      skip: 0,
       q: params.q
     });
 

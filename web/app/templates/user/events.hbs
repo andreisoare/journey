@@ -1,5 +1,15 @@
-<div class="events-list">
-  {{#each event in controller}}
-    {{event-block event=event}}
-  {{/each}}
-</div>
+{{#if model}}
+  <div class="events-list">
+    {{#each event in controller}}
+      {{event-block event=event}}
+    {{/each}}
+
+    {{#infinite-scroll content=model hasMore=hasMore}}
+      <img class="loading" src="/img/preloader-horizontal-black.gif"/>
+    {{/infinite-scroll}}
+  </div>
+{{else}}
+  <div class="no-data">
+    This user didn't trigger any events yet.
+  </div>
+{{/if}}

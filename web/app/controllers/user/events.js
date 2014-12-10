@@ -1,15 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
-  queryParams: ['q'],
-  q: '',
+  needs: ['user'],
+  user: Ember.computed.alias('controllers.user.model'),
 
   limit: 10,
-  scroll: 0,
-
-  reset: function() {
-    this.set('scroll', 0);
-  }.on('init'),
 
   hasMore: function() {
     var total = this.get('model.meta.total');
@@ -21,15 +16,11 @@ export default Ember.ArrayController.extend({
     // Triggered by the infinite-scroll component
     // http://blog.jasonkriss.com/building-an-infinite-scroll-ember-cli-addon
     fetchMore: function(cbk) {
-      cbk(this.store.find('user', {
+      cbk(this.store.find('event', {
+        user: this.get('user.id'),
         limit: this.get('limit'),
-        skip: this.get('model.length'),
-        q: this.get('q')
+        skip: this.get('model.length')
       }));
-    },
-
-    saveScroll: function(scroll) {
-      this.set('scroll', scroll);
     }
   }
 });

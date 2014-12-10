@@ -1,77 +1,23 @@
-function randomDate(start, end) {
-  return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-}
-
-var users = [
-  "Lucienne Richart",
-  "Afton Vang",
-  "Arlie Weckerly",
-  "Darrel Hereford",
-  "Kaitlyn Nghiem",
-  "Tamala Breau",
-  "Mel Overstreet",
-  "Kathlyn Poat",
-  "Dirk Maes",
-  "Machelle Nishioka",
-  "Ramona Kazee",
-  "Kay Breeden",
-  "Lorretta Balboa",
-  "Elizabet Kirschbaum",
-  "Veronika Limones",
-  "Majorie Scarborough",
-  "Priscila Hitchcock",
-  "Cassondra Dresel",
-  "Sherell Plotner",
-  "Mikki Medel",
-  "Eveline Munday",
-  "Tyra Mahaney",
-  "Daina Arndt",
-  "Carla Hopp",
-  "Clementina Elliot",
-  "Hoa Palmeri",
-  "Sydney Chappell",
-  "Idell Blystone",
-  "Oren Dobson",
-  "Tobie Wynn",
-  "Loris Hassan",
-  "Monte Cowboy",
-  "Bari Rangel",
-  "Shaneka Bjornson",
-  "Kathern Campisi",
-  "Lucrecia Lymon",
-  "Greg Alles",
-  "Angle Posada",
-  "Bryce Peed",
-  "Debra Evitt",
-  "Latonya Fling",
-  "Tama Poudrier",
-  "Carlene Hahne",
-  "Cole Burbank",
-  "Ronnie Babin",
-  "Jeri Bruck",
-  "Anjanette Nabors",
-  "Hailey Matula",
-  "Liana Cummins",
-  "Bulah Levitsky"
-];
-
-var userObjects = users.map(function(user, index) {
-  return {
-    _id: "u" + index,
-    name: user,
-    email: user.toLowerCase().replace(' ', '.') + '@gmail.com',
-    created: randomDate(new Date(2014, 0, 1), new Date())
-  };
-});
-
 module.exports = function(app) {
   var express = require('express');
   var usersRouter = express.Router();
 
-  usersRouter.get('/', function(req, res) {
-    var chunkSize = parseInt(req.query.chunkSize);
-    var chunk = parseInt(req.query.chunk);
+  var util = require('../util');
+  var userFixtures = require('../fixtures/users');
+  var userObjects = userFixtures.map(function(user, index) {
+    return {
+      _id: "u" + index,
+      name: user,
+      email: user.toLowerCase().replace(' ', '.') + '@gmail.com',
+      created: util.randomDate(new Date(2014, 0, 1), new Date())
+    };
+  }).sort(function(a, b) {
+    if (a.created > b.created) return -1;
+    if (a.created < b.created) return 1;
+    return 0;
+  });
 
+  usersRouter.get('/', function(req, res) {
     var filteredUsers;
     if (req.query.q) {
       filteredUsers = userObjects.filter(function(user) {
@@ -81,7 +27,10 @@ module.exports = function(app) {
       filteredUsers = userObjects;
     }
 
-    var users = filteredUsers.slice(chunk * chunkSize, (chunk + 1) * chunkSize);
+    var limit = parseInt(req.query.limit);
+    var skip = parseInt(req.query.skip);
+    var users = filteredUsers.slice(skip, skip + limit);
+
     res.send({
       "users": users,
       "meta": {
