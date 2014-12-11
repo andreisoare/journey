@@ -82,14 +82,8 @@ Event
 
 ### Next
 
- * Browser back button doesn't work when transitioning from user to users
- * add real event fixtures using titles from our blog and urls from hacker news
- * convert everything to components. delete all Views/Controllers.
+ * preloader on fetchMore not showing on mobile
  * add tests
- * investigate performance issues when loading users route
- * keep an eye on "model dependent state". figure out a way to avoid resetting the users/index controller manually.
- * merge users/index with users
- * incorporate the grid and font-size from skeleton http://getskeleton.com
 
 ### Someday
 
@@ -97,7 +91,8 @@ Server
  * preload authenticated user from backend
  * preload user in the user route from backend
 
-Mobile
- * width too large on mobile. search bar looks weird on mobile.
- * preloader on fetchMore not showing on mobile
- * when going to a user profile page the scroll isn't at level 0
+Misc
+ * Browser back button doesn't work when transitioning from user to users
+ * investigate performance issues when loading users route
+ * keep an eye on "model dependent state". figure out a way to avoid resetting the users/index controller manually.
+ * incorporate the grid and font-size from skeleton http://getskeleton.com
