@@ -11,5 +11,14 @@ export default DS.Model.extend({
   browser: attr(),
   os: attr(),
   ip: attr(),
-  properties: attr('object')
+  properties: attr('object'),
+
+  shortReferrer: function() {
+    var maxLength = 40;
+    var r = this.get('referrer');
+    if (r.length > maxLength) {
+      return r.slice(0, maxLength) + "...";
+    }
+    return r;
+  }.property('referrer')
 });

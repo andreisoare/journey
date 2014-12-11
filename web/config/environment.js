@@ -51,7 +51,7 @@ module.exports = function(environment) {
     'img-src': "'self' www.gravatar.com *.wp.com",
     'style-src': "'self'",
     'media-src': "'self'"
-  }
+  };
 
   return ENV;
 };

@@ -1,5 +1,5 @@
 <div class="event-block">
   <div class="name">{{event.name}}</div>
-  <div class="referrer">{{event.referrer}}</div>
+  <a class="referrer" {{bind-attr href=event.referrer}} target="_blank">{{event.shortReferrer}}</a>
   <div class="timestamp">{{ago event.created}}</div>
 </div>
