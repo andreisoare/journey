@@ -18,7 +18,7 @@ module.exports = function(app) {
   });
 
   usersRouter.get('/', function(req, res) {
-    var query = (req.query.q || '').toLowerCare();
+    var query = (req.query.q || '').toLowerCase();
 
     var filteredUsers;
     if (query) {
