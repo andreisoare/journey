@@ -18,10 +18,12 @@ module.exports = function(app) {
   });
 
   usersRouter.get('/', function(req, res) {
+    var query = (req.query.q || '').toLowerCare();
+
     var filteredUsers;
-    if (req.query.q) {
+    if (query) {
       filteredUsers = userObjects.filter(function(user) {
-        return user.name.toLowerCase().indexOf(req.query.q) !== -1;
+        return user.name.toLowerCase().indexOf(query) !== -1;
       });
     } else {
       filteredUsers = userObjects;
