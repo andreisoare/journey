@@ -21,9 +21,13 @@ module.exports = function(app) {
 
   // Delay response to simulate network lag.
   app.use(function(req, res, next) {
+    var delay = 0;
+    if (req.url.indexOf("/api") === 0) {
+      delay = 1000;
+    }
     setTimeout(function() {
       next();
-    }, 750);
+    }, delay);
   });
 
   // Log proxy requests
